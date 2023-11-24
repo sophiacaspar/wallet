@@ -14,7 +14,7 @@ const (
 )
 
 func setupTestDB(t *testing.T) *sql.DB {
-	connStr := "host=db port=5432 user=wallets password=pa55w0rd dbname=wallets_db sslmode=disable"
+	connStr := "postgres://wallets:pa55w0rd@db:5432/wallets_db?sslmode=disable"
 
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
@@ -32,7 +32,7 @@ func setupTestDB(t *testing.T) *sql.DB {
 		t.Fatalf("error creating test database: %s", err)
 	}
 
-	connStr = connStr + " dbname=" + testDBName
+	connStr = "postgres://wallets:pa55w0rd@db:5432/"+ testDBName + "?sslmode=disable"
 	db, err = sql.Open("postgres", connStr)
 	if err != nil {
 		t.Fatalf("error connecting to test database: %s", err)
