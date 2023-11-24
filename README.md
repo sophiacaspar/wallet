@@ -22,7 +22,8 @@ To run this project locally, ensure you have the following installed:
    ```
 
 2. Navigate to the project directory.
-3. Build and run the application using Docker Compose:
+   
+4. Build and run the application using Docker Compose:
 
 ```bash
   docker-compose up --build
@@ -33,7 +34,10 @@ To run this project locally, ensure you have the following installed:
 Once the application is up and running, you can access the wallet service API:
 
 Base URL: http://localhost:4000
-Endpoints: - GET: http://localhost:4000/v1/wallet/{id} - PUT: http://localhost:4000/v1/wallet/subtract/{id} - PUT: http://localhost:4000/v1/wallet/add/{id}
+Endpoints: 
+* GET: http://localhost:4000/v1/wallet/{id}
+* PUT: http://localhost:4000/v1/wallet/subtract/{id}
+* PUT: http://localhost:4000/v1/wallet/add/{id}
 
 ## Testing
 
