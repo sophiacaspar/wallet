@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    restart: always
+    environment:
+      WALLET_DB_DSN: postgres://wallets:pa55w0rd@db:5432/wallets_db?sslmode=disable
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: wallets_db
+      POSTGRES_USER: wallets
+      POSTGRES_PASSWORD: pa55w0rd
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
