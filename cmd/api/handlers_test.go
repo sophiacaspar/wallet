@@ -61,6 +61,10 @@ func setupTestDB(t *testing.T) *sql.DB {
 		t.Fatalf("error creating test database: %s", err)
 	}
 
+    if err := db.Close(); err != nil {
+        t.Fatalf("Error closing database connection: %s", err)
+    }
+    
 	connStr = "postgres://wallets:pa55w0rd@db:5432/"+testDBName+"?sslmode=disable"
 	db, err = sql.Open("postgres", connStr)
 	if err != nil {
